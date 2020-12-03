@@ -6,7 +6,7 @@
 /*   By: yikeda <yikeda@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 22:06:39 by yikeda            #+#    #+#             */
-/*   Updated: 2020/12/02 19:28:34 by yikeda           ###   ########.fr       */
+/*   Updated: 2020/12/03 18:32:46 by yikeda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	ft_cutncpy_save(char **save)
 		if (toto[i] == '\n')
 		{
 			i++;
-			break;
+			break ;
 		}
 		i++;
 	}
@@ -47,7 +47,7 @@ static int	ft_readnsave(int fd, char *buff, char **save)
 			return (-1);
 		free(tmp);
 		if (ft_strnchr(buff, '\n', BUFFER_SIZE))
-			break;
+			break ;
 	}
 	return (ret);
 }
@@ -55,10 +55,11 @@ static int	ft_readnsave(int fd, char *buff, char **save)
 int			get_next_line(int const fd, char **line)
 {
 	static char	*save;
-	char		buff[BUFFER_SIZE + 1];
+	char		*buff;
 	int			ret;
 
-	if (read(fd, NULL, 0) < 0 || !line || BUFFER_SIZE <= 0)
+	if (read(fd, NULL, 0) < 0 || !line || BUFFER_SIZE <= 0 ||
+			!(buff = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 		return (-1);
 	if (!save)
 	{
