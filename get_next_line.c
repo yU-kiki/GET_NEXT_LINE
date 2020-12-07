@@ -6,31 +6,31 @@
 /*   By: yikeda <yikeda@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 22:06:39 by yikeda            #+#    #+#             */
-/*   Updated: 2020/12/03 18:32:46 by yikeda           ###   ########.fr       */
+/*   Updated: 2020/12/07 17:33:20 by yikeda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static int	ft_cutncpy_save(char **save)
+static int	ft_cut_save(char **save)
 {
 	int		i;
-	char	*toto;
+	char	*tmp;
 
 	i = 0;
-	toto = *save;
-	while (toto[i])
+	tmp = *save;
+	while (tmp[i])
 	{
-		if (toto[i] == '\n')
+		if (tmp[i] == '\n')
 		{
 			i++;
 			break ;
 		}
 		i++;
 	}
-	if (!(*save = ft_substr(toto, i, ft_strlen(toto))))
+	if (!(*save = ft_substr(tmp, i, ft_strlen(tmp))))
 		return (-1);
-	free(toto);
+	free(tmp);
 	return (0);
 }
 
@@ -76,7 +76,7 @@ int			get_next_line(int const fd, char **line)
 		save = NULL;
 		return (0);
 	}
-	if (ft_cutncpy_save(&save) == -1)
+	if (ft_cut_save(&save) == -1)
 		return (-1);
 	return (1);
 }
