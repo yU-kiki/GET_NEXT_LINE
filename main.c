@@ -53,5 +53,6 @@ int main(int argc, char **argv)
     while (argc >= 0) //最後にファイルを閉じていく
         close(fd[argc--]);
     while (1) //メモリリーク確認？？
+	system("leaks a.out");
 	return (0);
 }
