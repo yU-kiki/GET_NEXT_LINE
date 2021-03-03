@@ -6,7 +6,7 @@
 /*   By: yikeda <yikeda@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 22:06:39 by yikeda            #+#    #+#             */
-/*   Updated: 2020/12/07 17:33:20 by yikeda           ###   ########.fr       */
+/*   Updated: 2021/03/03 18:49:28 by yikeda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ static int	ft_readnsave(int fd, char *buff, char **save)
 		if (ft_strnchr(buff, '\n', BUFFER_SIZE))
 			break ;
 	}
+	free(buff);
 	return (ret);
 }
 
